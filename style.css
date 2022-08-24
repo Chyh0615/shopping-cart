@@ -1,0 +1,239 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Cherry+Swash);
+.clientCart .clientCartList p, .clientCart .clientCartTitle h3 {
+  width: 100%;
+  text-align: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", "Microsoft JhengHei", "微軟正黑體", sans-serif;
+  letter-spacing: 2px;
+  line-height: 1.5;
+  cursor: context-menu;
+  list-style: none;
+  -webkit-user-drag: none;
+}
+
+nav {
+  padding: 10px;
+  text-align: center;
+  background-color: rgb(36, 44, 59);
+  color: rgb(112, 122, 137);
+}
+nav .option {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+nav .option--active {
+  color: rgb(240, 181, 59);
+}
+nav .cart {
+  display: block;
+  margin-right: 10px;
+  float: right;
+}
+nav .cart button {
+  background: none;
+  border: none;
+}
+nav .cart button i {
+  padding: 8px;
+  font-size: 28px;
+  color: rgb(112, 122, 137);
+}
+nav .cart .totalQuantity {
+  display: flex;
+  position: absolute;
+  top: 7px;
+  right: 16px;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgb(240, 181, 59);
+  color: black;
+}
+
+.cartList {
+  position: absolute;
+  padding: 20px;
+  top: 55px;
+  right: 30px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(229, 228, 226);
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
+}
+.cartList .cartTitle h3, .cartList .list p {
+  width: 120px;
+  text-align: center;
+}
+.cartList i {
+  font-size: 20px;
+  cursor: pointer;
+}
+.cartList .cartTitle, .cartList .list {
+  display: flex;
+  align-items: center;
+}
+.cartList .checkout {
+  background-color: rgb(204, 204, 204);
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border-color: rgb(204, 204, 204);
+  float: right;
+}
+
+.items {
+  display: grid;
+  margin: 50px auto;
+  justify-content: center;
+  grid-template-columns: repeat(3, 350px);
+  grid-template-rows: repeat(4, 380px);
+  grid-gap: 50px;
+}
+.items .item {
+  display: block;
+  padding: 20px;
+  width: 350px;
+  height: 380px;
+  text-align: center;
+  border: 1px solid rgb(211, 211, 211);
+  border-radius: 10px;
+}
+.items .item-img {
+  width: 280px;
+  height: 160px;
+}
+.items .item h3, .items .item .item-img, .items .item p, .items .item .updatenum {
+  margin-bottom: 15px;
+}
+.items .item .updatenum {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+.items .item .updatenum button {
+  margin: 0 10px;
+  width: 25px;
+  height: 25px;
+}
+.items .item .updatenum input {
+  width: 100px;
+  text-align: center;
+}
+.items .item .updatenum input:focus {
+  outline: none;
+}
+.items .item .add {
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  background: linear-gradient(to bottom, rgb(254, 222, 144) 0%, rgb(232, 175, 35) 100%);
+}
+
+#choco {
+  padding: 20px 0;
+  height: 390px;
+}
+#choco-img {
+  margin: 0;
+  width: 100%;
+}
+#choco a {
+  width: 100%;
+  text-decoration: none;
+}
+#choco a p {
+  font-size: 10px;
+  background-color: black;
+  color: white;
+}
+
+.clientCart {
+  display: block;
+  margin: 50px auto;
+  padding: 20px;
+  width: 80%;
+  text-align: center;
+  border-radius: 10px;
+  background-color: rgb(240, 181, 59);
+}
+.clientCart p {
+  margin-top: 10px;
+}
+.clientCart button {
+  background-color: rgb(204, 204, 204);
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border-color: rgb(204, 204, 204);
+}
+.clientCart .clientCartTitle {
+  display: flex;
+}
+.clientCart .clientCartList {
+  display: flex;
+}
+.clientCart .clientCartList p i {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+}
+
+@media all and (max-width: 1150px) {
+  .items {
+    grid-template-columns: repeat(2, 350px);
+    grid-template-rows: repeat(6, 380px);
+  }
+}
+@media all and (max-width: 750px) {
+  .cartList .cartTitle h3, .cartList .list p {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .items {
+    grid-template-columns: repeat(1, 350px);
+    grid-template-rows: repeat(12, 380px);
+  }
+  .clientCart {
+    width: 90%;
+  }
+}
+@media all and (max-width: 530px) {
+  .option {
+    font-size: 18px;
+  }
+  .clientCartTitle h3, .clientCartList p {
+    font-size: 14px;
+  }
+}
+@media all and (max-width: 450px) {
+  nav .option {
+    padding: 5px 10px 5px 5px;
+    font-size: 12px;
+  }
+  nav .cart button i {
+    font-size: 24px;
+  }
+  nav .cart .totalQuantity {
+    right: 19px;
+    width: 21px;
+    height: 21px;
+  }
+  .clientCart {
+    padding: 20px 5px;
+  }
+  .clientCartTitle h3, .clientCartList p {
+    font-size: 8px;
+  }
+}/*# sourceMappingURL=style.css.map */

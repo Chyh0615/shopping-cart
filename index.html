@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+</head>
+<body>
+    <div id="app">
+        <nav class="bar">
+            <h2 class="option" v-for="(item, index) in category" @click="isActive(index)" :class="[index === active ? 'option--active' : '']">{{category[index]}}</h2>
+            <div class="cart">
+                <button @click="showCart = !showCart"><i class="bi bi-cart4"></i></button>
+                <p class="totalQuantity">{{ cartItems.length }}</p>
+            </div>
+        </nav>
+        <div class="cartList" v-show="showCart">
+            <div v-show="cartItems.length == 0">
+                <p>Your cart is empty!!</p>
+            </div>
+            <div v-show="cartItems.length > 0">
+                <h3>Your Cart</h3><br>
+                <div class="cartTitle">
+                <h3>Items</h3> <h3>Quantity</h3> <h3>Price</h3> <h3>Remove</h3> <h3>Total</h3>
+                </div>
+                <div v-for="item in cartItems" class="list">
+                    <p>{{ item.name }}</p>
+                    <p>{{ item.quantity }}</p>
+                    <p>${{ item.price }}</p>
+                    <p><i @click="remove(item)" class="bi bi-trash-fill"></i></p>
+                    <p>${{ item.total }}</p>
+                </div>
+                <button @click="checkout = true, showCart = false" class="checkout">Check out</button>
+            </div>
+        </div>
+        <section class="items" v-show="!checkout">
+            <div class="item" v-show="active === 0" v-for="item in isFruit">
+                <h3>{{ item.name }}</h3>
+                <img class="item-img" :src="item.src">
+                <p>Price: ${{ item.price }}</p>
+                <div class="updatenum"><button @click="subtractNum(item)">-</button><input v-model="item.quantity" type="text"><button @click="addNum(item)">+</button></div>
+                <button @click="addtoCart(item)" class="add">Add to Cart</button>
+            </div>
+            <div class="item" v-show="active === 1" v-for="item in isVeg">
+                <h3>{{ item.name }}</h3>
+                <img class="item-img" :src="item.src">
+                <p>Price: ${{ item.price }}</p>
+                <div class="updatenum"><button @click="subtractNum(item)">-</button><input v-model="item.quantity" type="text"><button @click="addNum(item)">+</button></div>
+                <button @click="addtoCart(item)" class="add">Add to Cart</button>
+            </div>
+            <div class="item" v-show="active === 2" v-for="item in isMeat">
+                <h3>{{ item.name }}</h3>
+                <img class="item-img" :src="item.src">
+                <p>Price: ${{ item.price }}</p>
+                <div class="updatenum"><button @click="subtractNum(item)">-</button><input v-model="item.quantity" type="text"><button @click="addNum(item)">+</button></div>
+                <button @click="addtoCart(item)" class="add">Add to Cart</button>
+            </div>
+            <div id="choco" class="item" v-show="active === 3" v-for="item in isChoco">
+                <h3>{{ item.name }}</h3>
+                <img id="choco-img" class="item-img" :src="item.src">
+                <a :href="item.link" target="_blank"><p class="img-author">{{ item.author }}</p></a>
+                <p>Price: ${{ item.price }}</p>
+                <div class="updatenum"><button @click="subtractNum(item)">-</button><input v-model="item.quantity" type="text"><button @click="addNum(item)">+</button></div>
+                <button @click="addtoCart(item)" class="add">Add to Cart</button>
+            </div>
+        </section>
+        <section v-show="checkout">
+            <div class="clientCart">
+                <div class="clientCartTitle">
+                    <h3>Items</h3> <h3>Quantity</h3> <h3>Price</h3> <h3>Remove</h3> <h3>Total</h3>
+                </div>
+                <div v-for="item in cartItems" class="clientCartList">
+                    <p>{{ item.name }}</p>
+                    <p>{{ item.quantity }}</p>
+                    <p>${{ item.price }}</p>
+                    <p><i @click="remove(item)" class="bi bi-trash-fill"></i></p>
+                    <p>${{ item.total }}</p>
+                </div>
+                <p>Sum ${{ sum }}</p>
+                <button @click="checkout = !checkout">Previous Page</button>
+            </div>
+        </section>
+        
+    </div>
+    <script src="item.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
