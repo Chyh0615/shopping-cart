@@ -37,10 +37,22 @@ const app = Vue.createApp({
         subtractNum(item) {
             if(item.quantity !== 0) {
                 item.quantity -= 1;
-            }
+            };
         },
         addNum(item) {
             item.quantity += 1;
+        },
+        minusNum(item) {
+            if(item.quantity !== 0) {
+                item.quantity -= 1;
+                item.total = item.price * item.quantity;
+            } else {
+                this.remove(item);
+            };
+        },
+        plusNum(item) {
+            item.quantity += 1;
+            item.total = item.price * item.quantity;
         },
         addtoCart(item) {
             if(item.quantity >= 1) {

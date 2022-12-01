@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://fonts.googleapis.com/css?family=Cherry+Swash);
-.clientCart .clientCartList p, .clientCart .clientCartTitle h3 {
+.clientCart .clientCartList div, .clientCart .clientCartList p, .clientCart .clientCartTitle h3 {
   width: 100%;
   text-align: center;
 }
@@ -184,6 +184,11 @@ nav .cart .totalQuantity {
 }
 .clientCart .clientCartList p i {
   cursor: pointer;
+}
+.clientCart .clientCartList div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-evenly;
 }
 
 button {

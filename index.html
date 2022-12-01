@@ -37,7 +37,7 @@
                 <button @click="checkout = true, showCart = false" class="checkout">Check out</button>
             </div>
         </div>
-        <section class="items" v-show="!checkout">
+        <section class="items" v-show="!checkout" @click="showCart = false">
             <div class="item" v-show="active === 0" v-for="item in isFruit">
                 <h3>{{ item.name }}</h3>
                 <img class="item-img" :src="item.src">
@@ -68,14 +68,14 @@
                 <button @click="addtoCart(item)" class="add">Add to Cart</button>
             </div>
         </section>
-        <section v-show="checkout">
+        <section v-show="checkout" @click="showCart = false">
             <div class="clientCart">
                 <div class="clientCartTitle">
                     <h3>Items</h3> <h3>Quantity</h3> <h3>Price</h3> <h3>Remove</h3> <h3>Total</h3>
                 </div>
                 <div v-for="item in cartItems" class="clientCartList">
                     <p>{{ item.name }}</p>
-                    <p>{{ item.quantity }}</p>
+                    <div><button @click="minusNum(item)">-</button><span>{{ item.quantity }}</span><button @click="plusNum(item)">+</button></div> 
                     <p>${{ item.price }}</p>
                     <p><i @click="remove(item)" class="bi bi-trash-fill"></i></p>
                     <p>${{ item.total }}</p>

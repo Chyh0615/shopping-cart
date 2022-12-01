@@ -189,6 +189,12 @@ nav {
                 cursor: pointer;
             }
         }
+        div {
+            @extend%type;
+            display: flex;
+            align-items: baseline;
+            justify-content: space-evenly;
+        }
     }
 }
 button {
